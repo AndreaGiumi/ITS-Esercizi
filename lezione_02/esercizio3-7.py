@@ -1,6 +1,6 @@
 # (3-7)
 
-invitati: list = ["Franccesco Totti", "J-Ax", "Bryan Cranston"]
+invitati: list[str] = ["Franccesco Totti", "J-Ax", "Bryan Cranston"]
 
 print(f"Caro {invitati[0]}! Sei invitato alla cena di Natale presso la mia abitazione! Daje vedi di venire!")
 print(f"Caro {invitati[1]}! Sei invitato alla cena di Natale presso la mia abitazione! Preparati qualche bella canzone delle tue!")
@@ -42,6 +42,12 @@ print(f"Caro {invitati.pop(1)}, con grande dispiacere devo annunciare che non po
 print(f"Caro {invitati.pop(3)}, con grande dispiacere devo annunciare che non potrò invitarvi alla cena!")
 print(f"Caro {invitati.pop(0)}, con grande dispiacere devo annunciare che non potrò invitarvi alla cena!")
 
-del invitati
+
+print(f"Caro {invitati[0]} sei ancora invitato alla cena!")
+print(f"Caro {invitati[1]} sei ancora invitato alla cena!")
+
+del invitati[0]
+del invitati[0]
 
 print(invitati)
+

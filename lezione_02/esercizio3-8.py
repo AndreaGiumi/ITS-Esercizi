@@ -1,4 +1,4 @@
-myfavoritePlaces: list = ["Islanda", "Route 66", "Giappone", "Norvegia", "Hawaii"]
+myfavoritePlaces: list[str] = ["Islanda", "Route 66", "Giappone", "Norvegia", "Hawaii"]
 
 print(f"Questa è la lista iniziale: {myfavoritePlaces}")
 

@@ -1,4 +1,4 @@
-myfavoriteCities: list = ["Roma", "Cassino", "Napoli", "Lecce", "Bolzano"]
+myfavoriteCities: list[str] = ["Roma", "Cassino", "Napoli", "Lecce", "Bolzano"]
 
 #aggiungo una città alla fine della lista
 myfavoriteCities.append("Agrigento")

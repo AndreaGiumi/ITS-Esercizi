@@ -1,6 +1,6 @@
 # (3-5)
 
-invitati: list = ["Franccesco Totti", "J-Ax", "Bryan Cranston"]
+invitati: list[str] = ["Franccesco Totti", "J-Ax", "Bryan Cranston"]
 
 print(f"Caro {invitati[0]}! Sei invitato alla cena di Natale presso la mia abitazione! Daje vedi di venire!")
 print(f"Caro {invitati[1]}! Sei invitato alla cena di Natale presso la mia abitazione! Preparati qualche bella canzone delle tue!")

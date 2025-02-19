@@ -1,6 +1,6 @@
 #(3-6)
 
-invitati: list = ["Franccesco Totti", "J-Ax", "Bryan Cranston"]
+invitati: list[str] = ["Franccesco Totti", "J-Ax", "Bryan Cranston"]
 
 print(f"Caro {invitati[0]}! Sei invitato alla cena di Natale presso la mia abitazione! Daje vedi di venire!")
 print(f"Caro {invitati[1]}! Sei invitato alla cena di Natale presso la mia abitazione! Preparati qualche bella canzone delle tue!")
@@ -18,10 +18,10 @@ print(f"Caro {invitati[0]}! Sei invitato alla cena di Natale presso la mia abita
 print(f"Caro {invitati[1]}! Sei invitato alla cena di Natale presso la mia abitazione! Preparati qualche bella canzone delle tue!")
 print(f"Dear {invitati[2]}! You are invited to the Christmas dinner at my home!")
 
-print(f"Con molta fortuna ho ritrovato un tavolo più grande per ospitare altra gente per la cena")
+print("Con molta fortuna ho ritrovato un tavolo più grande per ospitare altra gente per la cena")
 
 invitati.insert(0, "Gigi Proietti")
-invitati.insert(2, "Lazza")
+invitati.insert(len(invitati)//2 , "Lazza")
 invitati.append("Maradona")
 
 
