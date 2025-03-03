@@ -11,3 +11,4 @@ while i <= 10:
         dispari += 1
 print(f"Conto dei numeri pari: {pari}")
 print(f"Conto dei numeri dispari: {dispari}")
+
