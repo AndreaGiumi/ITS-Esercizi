@@ -23,3 +23,5 @@ while True:
     elif opzioni == "esci":
         break
     
+
+     
