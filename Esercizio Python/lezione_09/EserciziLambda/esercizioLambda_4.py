@@ -1,6 +1,6 @@
 studenti:list[tuple] = [("Luca", 21), ("Anna", 19), ("Marco", 22)]  
 
-age:list = sorted(studenti, key=lambda age: age, reverse=True)
+age:list = sorted(studenti, key=lambda age: age)
 
 
 
