@@ -9,11 +9,11 @@ class Genere(StrEnum):
 
 
 class Continente(StrEnum):
-    asia = auto()
-    europa = auto()
-    america = auto()
-    africa = auto()
-    antartide = auto()
+    Asia = auto()
+    Europa = auto()
+    America = auto()
+    Africa = auto()
+    Antartide = auto()
 
 
 class Voto(int):
