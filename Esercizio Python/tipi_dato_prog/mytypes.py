@@ -36,7 +36,6 @@ class FloatGEZ(float):
         return float.__new__(cls, v)
 
 
-
 class Indirizzo:
     _via: str
     _civico: int
@@ -55,6 +54,9 @@ class Indirizzo:
     def __hash__(self) -> int:
         return hash((self._via, self._civico))
     
+    def __str__(self):
+        return f"\nVia: {self._via}\nCivico: {self._civico}"
+    
 
 
     def __eq__(self, other: Any) -> bool:
@@ -68,10 +70,14 @@ class Indirizzo:
 
 
 class Data:
-    _data:str
+    _data:date
+
 
     def __init__(self, data:str) -> None:
-        self._data:date = datetime.strptime(data,"%d.%m.%Y").date()
+            try:
+                self._data: date = datetime.strptime(data, "%d.%m.%Y").date()
+            except ValueError:
+                raise ValueError(f"Formato data non valido: {data}. Usa il formato GG.MM.AAAA")
 
     def data(self) -> str:
         return self._data
@@ -88,22 +94,19 @@ class Data:
             return False
         return self._data == other._data
     
+    def __str__(self):
+        return f"Data: {self._data}"
+    
 
 class Anno:
-    _anno: int
     def __init__(self, anno: int):
-        self.anno(anno)
-
-    def anno(self, anno: int):
-        if anno < 1900:
-            print("Inserire anno compreso tra 1900 ad oggi")
-        else:
-            self._anno = anno
+        if not isinstance(anno, int):
+            raise TypeError("L'anno deve essere un numero intero.")
+        if anno < 1900 or anno > 9999:
+            raise ValueError(f"Anno non valido: {anno}. Deve essere >= 1900 e un numero di 4 cifre.")
+        self._anno = anno
 
 
-    def get_anno(self) -> int:
-        return self._anno
-    
     def __hash__(self) -> int:
         return hash(self._anno)
         
@@ -113,6 +116,9 @@ class Anno:
                 hash(self) != hash(other):
             return False
         return self._anno == other._anno
+    
+    def __str__(self):
+        return f"Anno: {self._anno}"
 
 
 class Email:
@@ -139,30 +145,37 @@ class Email:
             return False
         return self._re_mail == other._re_mail
     
+    def __str__(self):
+        return f"Email: {self._re_mail}"
+    
 
 
-    class CodiceFiscale:
-        _cf: str = r"[A-Z]{6}[0-9]{2}[A-EHLMPRST][0-9]{2}[A-Z0-9]{4}[A-Z]$"
-        def __init__(self, codice) -> None:
-            codice = codice.upper()
-            if not re.findall(self.cf, codice):
-                raise ValueError(f"Codice Fiscale non valido {codice}")
-            self._cf = codice
+class CodiceFiscale:
+    _cf: str = r"[A-Z]{6}[0-9]{2}[A-EHLMPRST][0-9]{2}[A-Z0-9]{4}[A-Z]$"
+    def __init__(self, codice) -> None:
+        codice = codice.upper()
+        if not re.findall(self._cf, codice):
+            raise ValueError(f"Codice Fiscale non valido {codice}")
+        self._cf = codice
 
 
 
-        def cf(self) -> bool:
-            return self._cf
+    def cf(self) -> bool:
+        return self._cf
         
 
-        def __hash__(self) -> int:
-            return hash(self._cf)
+    def __hash__(self) -> int:
+        return hash(self._cf)
         
-        def __eq__(self, other: Any) -> bool:
-            if other is None or \
-                    not isinstance(other, type(self)) or \
-                    hash(self) != hash(other):
-                return False
-            return self._cf == other._cf
+    def __eq__(self, other: Any) -> bool:
+        if other is None or \
+                not isinstance(other, type(self)) or \
+                hash(self) != hash(other):
+            return False
+        return self._cf == other._cf
+
+
+    def __str__(self):
+        return f"Codice Fiscale: {self._cf}"
                
         
