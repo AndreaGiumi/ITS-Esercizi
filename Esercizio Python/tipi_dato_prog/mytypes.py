@@ -177,5 +177,31 @@ class CodiceFiscale:
 
     def __str__(self):
         return f"Codice Fiscale: {self._cf}"
+    
+
+
+class Matricola:
+    def __init__(self, matricola: str):
+        if not isinstance(matricola, str):
+            raise ValueError("La matricola deve essere un numero intero")
+        if len(matricola) < 5 or len(matricola) > 5:
+            raise TypeError(f"Matricola non valida: {matricola}. Deve essere un numero di 5 cifre.")
+        self._matricola = matricola
+
+
+    def __hash__(self) -> int:
+        return hash(self._matricola)
+        
+    def __eq__(self, other: Any) -> bool:
+        if other is None or \
+                not isinstance(other, type(self)) or \
+                hash(self) != hash(other):
+            return False
+        return self._matricola == other._matricola
+    
+    def __str__(self):
+        return f"Matricola: {self._matricola}"
+
+        
                
         
