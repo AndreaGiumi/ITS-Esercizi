@@ -1,0 +1,8 @@
+Tipo Posizione: {ricercatore, professore associato, professore ordinario}
+
+
+Tipo TipoIstituzionali: {didattica, ricerca, missione, consiglio di dipartimento, consiglio di area didattica etc..}
+
+
+
+Tipo TipoProgettuali: {ricerca e sviluppo, dimostrazioni, managment etc...}

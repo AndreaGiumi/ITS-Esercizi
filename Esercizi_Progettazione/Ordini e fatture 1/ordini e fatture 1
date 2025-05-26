@@ -1,0 +1,37 @@
+
+ Raffinamento dei requisiti Ordini e Fatture 1
+ 
+ 	1. Dipartimento:
+ 		1.1 nome
+ 		1.2 indirizzo (v. req 5 ) 
+ 		1.3 direttore (v. req 2)
+ 	
+ 	2. Direttore:
+ 		2.1 nome
+ 		2.2 cognome
+ 		2.3 cf
+ 		2.4 data di nascita
+ 		2.5 luogo di nascita
+ 		2.6 anni di servizio
+ 		
+ 	3. Ordini:
+ 		3.1 dipartimento (v. req 1)
+ 		3.2 data di stipula
+ 		3.3 fornitore (v. req )
+ 		3.4 descrizione beni e sevizi
+ 		3.5 aliquota IVA
+ 		3.6 stato ordine
+ 		3.6 imponibile
+ 	
+ 	4. Fornitore:
+ 		4.1 ragione sociale (nome ditta)
+ 		4.2 p.iva
+ 		4.3 numero di telefono
+ 		4.4 indirizzo email
+ 		4.5 indirizzo (v. req 5)
+ 		
+ 		
+ 	5. Indirizzo.
+ 		5.1 nome via
+ 		5.2 civico
+ 		5.3 cap

@@ -1,0 +1,24 @@
+
+
+ Voli Aerei 1 Raffinamento dei requisiti
+
+
+  Requisiti per voli:
+	1.1 codice (Stringa o Reale)
+	1.2 durata(Reale)
+	1.3 compagnia aerea
+	1.4 aeroporto di partenza
+	1.5 aeroporto di arrivo
+	
+  Requisiti aeroporti:
+  	2.1 codice (Stringa o Reale)
+  	2.2 nome (Stringa)
+  	2.3 città (Stringa)
+  		2.3.1 nome (Stringa)
+  		2.3.2 numero abitanti(Reale)
+  	2.4 nazione (Stringa)
+  	
+  Requisiti compagnie:
+  	3.1 nome (Stringa)
+  	3.2 anno fondazione ()
+  	3.3 città afferenza direzione (Stringa)

@@ -30,10 +30,129 @@ class IntGEZ(int):
         return int.__new__(cls, v)
     
 class FloatGEZ(float):
-    def __new__(cls, v:float|Self) -> Self:
-        if v < 0.00:
-            raise ValueError(f"Value v == {v} must be greater or equal than 0.00")
-        return float.__new__(cls, v)
+    def __new__(cls,v: float|int|str|bool|Self) -> Self:
+        n: float = super().__new__(cls, v)
+
+        if n >=0:
+            return n
+        
+        raise ValueError(f"Il valore {n} è negativo!")
+    
+
+class Valuta(str):
+    def __new__(cls, v: str) -> Self:
+        if re.fullmatch(f"^[A-Z]{3}", v):
+            return super().__new__(cls, v)
+        raise ValueError("Il codice {v} non è un codice valido per una valuta!")
+
+class Telefono(str):
+    def __new__(cls, v: str) -> Self:
+        if re.fullmatch(f"^[0-9]{10}", v):
+            return super().__new__(cls, v)
+        raise ValueError("Il codice {v} non è un codice valido per una valuta!")
+
+class Denaaro:
+    # Rappresenta il tipo di dato concettuale composto
+    # con i seguenti campi:
+    # -importo: Reale
+    # -valuta: Valuta
+    _importo: float
+    _valuta: Valuta
+
+    def __init__(self, imp: float, val: Valuta) -> None:
+        self._importo = imp
+        self._valuta = val
+
+    def importo(self) -> float:
+        return self._importo
+    
+
+    def valuta(self)-> Valuta:
+        return self._valuta
+    
+    def __str__(self) ->str:
+        return f"{self.importo()} {self.valuta()}"
+    
+
+    def __repr__(self) ->str:
+        return f"Denaro: {self.importo()} unità di valuta {self.valuta()}"
+    
+
+    def __hash__(self) ->int:
+        return hash((self.importo(), self.valuta()))
+    
+
+    def __eq__(self, other: Any) -> bool:
+        if not isinstance(other, type(self)) or \
+            hash(self) != hash(other):
+            return False
+        return self.importo() == other.importo() and \
+            self.valuta() == other.valuta()
+        
+
+    def __add__(self, other: Self) -> Self:
+        
+        """Somma self ad un'altra istanza di Denaro , ma solo se la valuta è la stessa
+        Restituisce una nuova istanza di Denaro"""
+
+        if self.valuta() != other.valuta():
+            raise ValueError(f"Non posso sommare importi con due valute diverse")
+        
+        somma: float = self.importo() + other.importo()
+        return Denaaro(somma, self.valuta())
+
+
+class FloatDenaro(float):
+    _valuta: Valuta
+    def __new__(cls, imp: float, val: Valuta) -> Self:
+        d = super().__new__(imp)
+    
+        d._valuta = val
+        return d
+    
+
+    def importo(self) -> float:
+        return self.real
+    
+
+    def valuta(self)-> Valuta:
+        return self._valuta        
+
+    def __str__(self) ->str:
+        return f"{self.real} {self.valuta()}"
+    
+
+    def __repr__(self) ->str:
+        return f"Denaro: {self.importo()} unità di valuta {self.valuta()}"
+    
+
+    def __hash__(self) ->int:
+        return hash((self.importo(), self.valuta()))
+    
+
+    def __eq__(self, other: Any) -> bool:
+        if not isinstance(other, type(self)) or \
+            hash(self) != hash(other):
+            return False
+        return self.importo() == other.importo() and \
+            self.valuta() == other.valuta()
+        
+
+    def __add__(self, other: Self) -> Self:
+        
+        """Somma self ad un'altra istanza di Denaro , ma solo se la valuta è la stessa
+        Restituisce una nuova istanza di Denaro"""
+
+        if self.valuta() != other.valuta():
+            raise ValueError(f"Non posso sommare importi con due valute diverse")
+        
+        somma: float = self.importo() + other.importo()
+        return FloatDenaro(somma, self.valuta())
+
+
+    def __sub__(self, other: Self) ->Self:
+        return self + FloatDenaro(-other, other.valuta())  
+
 
 
 class Indirizzo:
@@ -57,8 +176,6 @@ class Indirizzo:
     def __str__(self):
         return f"\nVia: {self._via}\nCivico: {self._civico}"
     
-
-
     def __eq__(self, other: Any) -> bool:
         if other is None or \
                 not isinstance(other, type(self)) or \
@@ -67,35 +184,6 @@ class Indirizzo:
         return self._via == other._via and self._civico == other._civico
     
 
-
-
-class Data:
-    _data:date
-
-
-    def __init__(self, data:str) -> None:
-            try:
-                self._data: date = datetime.strptime(data, "%d.%m.%Y").date()
-            except ValueError:
-                raise ValueError(f"Formato data non valido: {data}. Usa il formato GG.MM.AAAA")
-
-    def data(self) -> str:
-        return self._data
-    
-
-    def __hash__(self) -> int:
-        return hash(self._data)
-    
-
-    def __eq__(self, other: Any) -> bool:
-        if other is None or \
-                not isinstance(other, type(self)) or \
-                hash(self) != hash(other):
-            return False
-        return self._data == other._data
-    
-    def __str__(self):
-        return f"Data: {self._data}"
     
 
 class Anno:

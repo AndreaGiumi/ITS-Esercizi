@@ -1,0 +1,48 @@
+ 1. Requisiti delle officine:
+ 	1.1 nome (una stringa)
+ 	1.2 indirizzo (tipo indirizzo)
+ 	1.3 numero di dipendenti
+ 	1.4 i dipendenti (v .req 2)
+ 		1.1.1 anni di servizio (numero di anni quindi si ipotizza sia un intero)(v. req 2.6)
+ 		1.1.2 il direttore (v. req 3)
+ 		
+ 		
+ 2. Requisiti dipendenti
+ 	2.1 nome (Stringa)
+ 	2.2 cognome (Stringa)
+ 	2.3 cf (CodiceFiscale)
+ 	2.4 indirizzo (Indirizzo)
+ 	2.5 numero di telefono (Stringa)
+ 	2.6 numero anni di servizio (Intero non negativo)
+ 	
+ 3. Requisiti direttore
+	3.1 nome(Stringa)
+	3.2 cognome(Stringa)
+	3.3 cf(CodiceFiscale)
+	3.4 indirizzo(Indirizzo)
+	3.4 numero di telefono(Stringa)
+	3.5 data di nascita (Data)
+	
+	
+ 4. Requisiti riparazioni
+ 	4.1 codice (stringa)
+ 	4.2 veicolo (v. req 5)
+ 	4.3 data accettazione inizio
+ 	4.4 ora accettazione inizio
+ 	4.5 data di riconsegna (riparazioni terminate)
+ 	4.6 ora di riconsegna (riparazioni terminate)
+ 	
+  5. Requisiti veicolo
+  	5.1 modello
+  	5.2 tipo
+  	5.3 targa
+  	5.4 anno immatricolazine
+  	5.5 proprietario(v. req 6)
+  	
+  6. Requisiti proprietario
+  	6.1 nome
+  	6.2 cognome
+  	6.3 cf
+  	6.4 indirizzo
+  	6.5 telefono
+ 	
