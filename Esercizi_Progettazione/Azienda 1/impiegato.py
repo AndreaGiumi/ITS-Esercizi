@@ -28,7 +28,8 @@ class Impiegato:
     def setStipendio(self, stipendio: FloatGEZ) -> None:
         self.stipendio = stipendio
 
-
+    def getNascita(self) -> str:
+        return self.nascita
 
     def getNome(self)-> str:
         return self.nome
@@ -40,3 +41,6 @@ class Impiegato:
 
     def getStripendio(self) -> FloatGEZ:
         return self.stipendio 
+    
+    def __str__(self) -> str:
+        return f"{self.nome}  {self.cognome}  nascita: {self.nascita()}  stipendio: {self.stipendio()}"

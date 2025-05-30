@@ -31,7 +31,7 @@ class IntGEZ(int):
     
 class FloatGEZ(float):
     def __new__(cls,v: float|int|str|bool|Self) -> Self:
-        n: float = super().__new__(cls, v)
+        n: float = float().__new__(cls, v)
 
         if n >=0:
             return n
@@ -42,12 +42,6 @@ class FloatGEZ(float):
 class Valuta(str):
     def __new__(cls, v: str) -> Self:
         if re.fullmatch(f"^[A-Z]{3}", v):
-            return super().__new__(cls, v)
-        raise ValueError("Il codice {v} non è un codice valido per una valuta!")
-
-class Telefono(str):
-    def __new__(cls, v: str) -> Self:
-        if re.fullmatch(f"^[0-9]{10}", v):
             return super().__new__(cls, v)
         raise ValueError("Il codice {v} non è un codice valido per una valuta!")
 
@@ -153,36 +147,56 @@ class FloatDenaro(float):
     def __sub__(self, other: Self) ->Self:
         return self + FloatDenaro(-other, other.valuta())  
 
+class CAP(str):
+	def __new__(cls, cap: str) -> Self:
+		if re.fullmatch(r'^\d{5}$', cap):
+			return super().__new__(cls, cap)
+		
+		raise ValueError(f"La stringa '{cap}' non è un CAP italiano valido!")
+
 
 
 class Indirizzo:
-    _via: str
-    _civico: int
+	_via:str
+	_civico: str
+	_cap: CAP
 
-    def __init__(self, via: str, civico: int) -> None:
-        self._via = via
-        self._civico = civico
 
-    def via(self) -> str:
-        return self._via
-    
-    def civico(self) -> int:
-        return self._civico
-    
+	def __init__(self, via:str, civico:str, cap:CAP) -> None:
+		
+		self._via:str = via
 
-    def __hash__(self) -> int:
-        return hash((self._via, self._civico))
-    
-    def __str__(self):
-        return f"\nVia: {self._via}\nCivico: {self._civico}"
-    
-    def __eq__(self, other: Any) -> bool:
-        if other is None or \
-                not isinstance(other, type(self)) or \
-                hash(self) != hash(other):
-            return False
-        return self._via == other._via and self._civico == other._civico
-    
+		if not re.search("^[0-9]+[a-zA-Z]*$", civico):
+			raise ValueError(f"value for civico '{civico}' not allowed")
+		self._civico:str = civico
+		self._cap = cap
+	
+	def via(self)->str:
+		return self._via
+	def civico(self)->str:
+		return self._civico
+
+	def cap(self) -> CAP:
+		return self._cap
+
+	def __repr__(self) -> str:
+		return f"Indirizzo(via={self.via()}, civico={self.civico()}, cap={self.cap()})"
+
+	def __str__(self)->str:
+		return f"{self.via()} {self.civico()} -- {self.cap()}"
+
+
+	# class Indirizzo implementa un tipo di dato: Python deve riconoscere se oggetti diversi rappresentano lo stesso valore
+	def __hash__(self)->int:
+		return hash( (self.via(), self.civico(), self.cap()) )
+
+	def __eq__(self, other:Any)->bool:
+		if other is None or \
+				not isinstance(other, type(self)) or \
+				hash(self) != hash(other):
+			return False
+		return (self.via(), self.civico(), self.cap()) == (other.via(), other.civico(), other.cap())
+
 
     
 
@@ -210,31 +224,12 @@ class Anno:
 
 
 class Email:
-    _re_mail: str = r"[a-zA-Z0-9._%+-]+@[a-zA-Z.-]+\.[a-z]{2,}$"
-    def __init__(self, email) -> None:
-        email = email.lower()
-        if not re.findall(self._re_mail, email):
-            raise ValueError(f"Email non valida {email}")
-        self._re_mail = email
-        
+	def __new__(cls, v: str | Self) -> Self:
+		if re.fullmatch(r"^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$" 
+, v):
+			return super().__new__(cls, v)
+		raise ValueError(f"{v} non è un indirizzo email valido")
 
-    def re_mail(self) -> str:
-        return self._re_mail        
-    
-
-
-    def __hash__(self) -> int:
-        return hash(self._re_mail)
-        
-    def __eq__(self, other: Any) -> bool:
-        if other is None or \
-                not isinstance(other, type(self)) or \
-                hash(self) != hash(other):
-            return False
-        return self._re_mail == other._re_mail
-    
-    def __str__(self):
-        return f"Email: {self._re_mail}"
     
 
 
@@ -292,4 +287,23 @@ class Matricola:
 
         
                
-        
+
+class Telefono(str):
+	def __new__(cls, tel: str | Self) -> Self:
+		if re.fullmatch(r'^\d{10}$', tel):
+			return super().__new__(cls, tel)
+		raise ValueError(f"{tel} non è un numero di telefono italiano valido")
+
+
+
+class CodiceIATA:
+	def __new__(cls, cod: str | Self) -> Self:
+		if re.fullmatch(r'^[A-Z]{3}$',  cod):
+			return super().__new__(cls, cod)
+		raise ValueError(f"{cod} non è un codice iata valido")
+     
+class CodiceVolo:
+	def __new__(cls, codv: str | Self) -> Self:
+		if re.fullmatch(r'^[A-Z]{2}[0-9]{4}$', codv):
+			return super().__new__(cls, codv)
+		raise ValueError(f"{codv} non è un codice di volo valido")
