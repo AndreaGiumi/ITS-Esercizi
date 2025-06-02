@@ -22,7 +22,7 @@ def guess_number(num_min: int, num_max: int, attemps: int):
 
 
 
-guess_number(20, 40, 5)
+guess_number(20, 770, 25)
 
 
 
