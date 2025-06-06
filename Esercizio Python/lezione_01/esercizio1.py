@@ -5,10 +5,10 @@ a = int(input("Inserisci valore ipotenusa: "))
 b = int(input("Inserisci valore cateto: "))
 
 if a > b:
-    c = math.sqrt(a * a - b * b)
+ c = math.sqrt(a * a - b * b)
 else:
     print("Errore")
-print(c)
+print(f"{c:.2f}")
 
 
 

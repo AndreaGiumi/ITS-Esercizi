@@ -12,13 +12,12 @@ i = 1
 
 while i != 5:
         new_nome = input("Inserisci nuovo nome: ")
-        new_vendite = (input("Inserisci nuovo valore: "))
+        new_vendite = int(input("Inserisci nuovo valore: "))
 
-        if new_nome > max_nome:
+        if new_vendite > max_vendite:
             max_nome = new_nome
             max_vendite = new_vendite
         else:
-            if new_vendite < max_vendite:
                 min_nome = new_nome
                 min_vendite = new_vendite
 
