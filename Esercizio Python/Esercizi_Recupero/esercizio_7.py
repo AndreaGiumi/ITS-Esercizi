@@ -9,7 +9,7 @@ class ContactManager:
             raise ValueError("Errore: il contatto è già nella rubrica!")
         
         else:
-            self.contact_name[name] = phone_numbers
+            self.contacts[name] = phone_numbers
         
 
             return {name:phone_numbers}

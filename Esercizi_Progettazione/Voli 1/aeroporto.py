@@ -24,18 +24,6 @@ class Aeroporto:
         return self._nome
     
 
-    def __hash__(self) -> int:
-        return hash(self._codice)
-
-    def __eq__(self, other: Any)  -> bool:
-        if other is None or \
-                not isinstance(other, type(self)) or \
-                hash(self) != hash(other):
-            return False
-        return self._codice == other._codice
-    
-
-
 
     def __str__(self) -> str:
         return f"Codice IATA: {self._codice} \nNome Aeroporto:  {self._nome}"

@@ -7,15 +7,10 @@ class Compagnia:
 
     def __init__(self, nome: str, fondazione: Anno) -> None:
         self.set_nome(nome)
-        self.set_fondazione(fondazione)
-        
+        self._fondazione = fondazione
 
     def set_nome(self,nome: str) -> None:
         self._nome = nome
-
-    def set_fondazione(self, fondazione: Anno) -> None:
-        self._fondazione = fondazione
-
 
     def nome(self) ->str:
         return self._nome
