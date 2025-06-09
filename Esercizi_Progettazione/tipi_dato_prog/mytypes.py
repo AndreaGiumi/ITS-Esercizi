@@ -25,11 +25,18 @@ class Voto(int):
 
 class IntGEZ(int):
     def __new__(cls, v:int|float|Self) -> Self:
-        if v < 0:
+        if v >= 0:
             raise ValueError(f"Value v == {v} must be greater or equal than 0")
         return int.__new__(cls, v)
     
-class FloatGEZ(float):
+
+class IntGZ(int):
+    def __new__(cls, v:int|float|Self) -> Self:
+        if v > 0:
+            raise ValueError(f"Value v == {v} must be greater than 0")
+        return int.__new__(cls, v)
+    
+class RealGEZ(float):
     def __new__(cls,v: float|int|str|bool|Self) -> Self:
         n: float = float().__new__(cls, v)
 
@@ -38,6 +45,15 @@ class FloatGEZ(float):
         
         raise ValueError(f"Il valore {n} è negativo!")
     
+
+class RealGZ(float):
+    def __new__(cls,v: float|int|str|bool|Self) -> Self:
+        n: float = float().__new__(cls, v)
+
+        if n > 0:
+            return n
+        
+        raise ValueError(f"Il valore {n} è negativo!")   
 
 class Valuta(str):
     def __new__(cls, v: str) -> Self:

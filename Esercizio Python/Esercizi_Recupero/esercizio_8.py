@@ -64,16 +64,17 @@ class VideoRentalStore:
     
     def add_movie(self, movie_id: str, title: str, director: str):
         if movie_id not in self._movie:
-            self._movie[movie_id] = Movie(title, director)
+            movie:Movie = Movie(title, director)
         else:
-            raise Exception(f"Il film con ID: {movie_id} esiste già!")
+            raise Exception(f"Il film: {movie} con ID: {movie_id} esiste già!")
+        
         
 
     def register_customer(self, customer_id: str, name: str):
         if customer_id not in self._customers:
-            self._customers[customer_id] = name
+            customer:Customer = Customer(customer_id, name)
         else:
-            raise Exception(f"Il cliente con ID: {customer_id} è già registrato!")
+            raise Exception(f"Il cliente: {customer} con ID: {customer_id} è già registrato!")
         
 
 
@@ -82,14 +83,14 @@ class VideoRentalStore:
         if customer_id not in self._customers[customer_id] or movie_id not in self._movie[movie_id]:
             raise Exception(f"Cliente: {customer_id} o Film: {movie_id} non trovato!")
         else:
-            self.rent_movie(self._movie[movie_id] or self._customers[customer_id])
+            (self._movie[movie_id] or self._customers[customer_id]).rent()
 
 
     def return_movie(self, customer_id: str, movie_id: str):
         if customer_id not in self._customers[customer_id] or movie_id not in self._movie[movie_id]:
             raise Exception(f"Cliente: {customer_id} o Film: {movie_id} non trovato!")
         else:
-            self.return_movie((self._movie[movie_id] or self._customers[customer_id]))
+           (self._movie[movie_id] or self._customers[customer_id]).return_movie()
 
 
     
