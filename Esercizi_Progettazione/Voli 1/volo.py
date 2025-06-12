@@ -4,12 +4,10 @@ from compagnia import Compagnia
 class Volo:
     _codice: CodiceVolo # noto alla nascita
     _durata: IntGEZ # noto alla nascita
-    _volo_comp: Compagnia # noto alla nascita
 
     def __init__(self, codice: CodiceVolo, durata: IntGEZ, volo_comp: Compagnia) -> None:
         self.set_codice(codice)
         self.set_durata(durata)
-        self.set_volo_comp(volo_comp)
         
 
     def set_codice(self, codice: CodiceVolo) ->None:
@@ -18,21 +16,12 @@ class Volo:
     def set_durata(self, durata: IntGEZ) -> None:
         self._durata = durata
 
-
-    def set_volo_comp(self, volo_comp: Compagnia) -> None:
-        self._volo_comp = volo_comp
-
-    
     def codice(self) -> CodiceVolo:
         return self._codice
     
 
     def durata(self) -> IntGEZ:
         return self._durata
-    
-
-    def volo_comp(self) -> Compagnia:
-        return self._volo_comp
     
 
     def __str__(self) -> str:

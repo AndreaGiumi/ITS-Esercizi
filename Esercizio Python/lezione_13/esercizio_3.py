@@ -6,8 +6,6 @@ def recursiveFactorial(a:int):
     
 
 
-print(recursiveFactorial(20))
-print(recursiveFactorial(1))
-print(recursiveFactorial(0))
+print(recursiveFactorial(100))
 
 

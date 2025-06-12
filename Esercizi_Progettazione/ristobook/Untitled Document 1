@@ -1,0 +1,19 @@
+  Requisiti Ristobook
+  1.clienti:
+	1.1 nome(stringa)
+ 	1.2 indiirizzo email(indirizzo email)
+  	  
+  2.ristorante
+  	2.1 nome
+  	2.2 partita IVA (partita IVA)
+  	2.3 indirizzo
+  	2.4 città
+  	2.5 tipologia cucina offerta (scelte da una lista tenuta sotto controllo dallo staff di RistoBook)
+  	
+  3.prenotazioni
+  	3.1 giorno
+  	3.2 ora
+  	3.3 numero commensali
+  	3.4 stato (confermate, rifiutate dal personale )
+  	   
+  	
