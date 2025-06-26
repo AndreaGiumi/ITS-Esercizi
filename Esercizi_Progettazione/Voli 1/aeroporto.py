@@ -17,7 +17,7 @@ class Aeroporto:
 
 
     def codice(self) -> CodiceIATA:
-        return self._nome
+        return self._codice
 
 
     def nome(self) -> str:
