@@ -14,7 +14,7 @@ class User:
 
 class Privileges:
     def __init__(self):
-        
+        pass
 
 
     def show_privileges(self, list_privileges:list[str]):

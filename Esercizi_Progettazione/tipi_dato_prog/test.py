@@ -1,5 +1,6 @@
-from mytypes import CodiceFiscale, FloatGEZ, Continente, Voto, IntGEZ, Indirizzo, Anno, Data, Email, Genere, Matricola
+from mytypes import *
 from typing import Any
+from datetime import date
 
 
 ciao: Indirizzo = Indirizzo("Via Valente", 6)
@@ -27,7 +28,7 @@ scorso: Anno = Anno(2077)
 
 
 
-ieri: Data = Data("20.5.2025")
+ieri: date = date("20.5.2025")
 # if isinstance(ieri, Data):
 #     print(f"\nieri è istanza della classe Data")
 # print(ieri)
@@ -50,7 +51,7 @@ mio: CodiceFiscale = CodiceFiscale("gmindr97d15c034r")
 
 
 
-ci: FloatGEZ = FloatGEZ(25)
+ci: RealGEZ = RealGEZ(25)
 # if isinstance(ci, FloatGEZ):
     # print(f"\nci è un istanza della classe FloatGEZ ")
 # print(ci)
@@ -86,12 +87,12 @@ matr2 : Matricola = Matricola("25145")
 # print(matr)
 
 
-print(matr == matr2)
+# print(matr == matr2)
 
-my_set: set[Any] = {matr, ita, ci, mai}
+# my_set: set[Any] = {matr, ita, ci, mai}
 
 
 
-print(type(matr))
+# print(type(matr))
 
-print(my_set)
+# print(my_set)

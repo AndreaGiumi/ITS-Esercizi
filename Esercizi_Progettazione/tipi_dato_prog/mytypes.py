@@ -8,6 +8,12 @@ class Genere(StrEnum):
     donna = auto()
 
 
+class Ruolo(StrEnum):
+     segretario = auto()
+     direttore = auto()
+     progettista = auto()
+
+
 class Continente(StrEnum):
     Asia = auto()
     Europa = auto()
