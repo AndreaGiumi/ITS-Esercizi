@@ -73,16 +73,21 @@ Si verifichi il funzionamento scrivendo un codice che crei almeno due oggetti di
     
     def getRate(self) -> str:
 
-            if self.getMedia() <= 1:
-                return f"Giudizio Terribile"
-            if 1 <= self.getMedia() <= 2:
-                return f"Giudizio Brutto"
-            if 2 <= self.getMedia() <= 3:
-                return f"Giudizio Normale"
-            if 3 <= self.getMedia() <= 4:
-                return f"Giudizio Bello"
-            if 4 <= self.getMedia() <= 5:
-                return f"Giudizio Grandioso"
+            # if self.getMedia() <= 1:
+            #     return f"Giudizio Terribile"
+            # if 1 <= self.getMedia() <= 2:
+            #     return f"Giudizio Brutto"
+            # if 2 <= self.getMedia() <= 3:
+            #     return f"Giudizio Normale"
+            # if 3 <= self.getMedia() <= 4:
+            #     return f"Giudizio Bello"
+            # if 4 <= self.getMedia() <= 5:
+            #     return f"Giudizio Grandioso"
+
+            match self.getMedia():
+                 
+                 case 1:
+                      return 
 
 
 

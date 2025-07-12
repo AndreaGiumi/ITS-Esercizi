@@ -168,6 +168,7 @@ def pariUguali(a: list[int], b: list[int]) -> list[int]:
         else:
             c.append(0)
     return c
+
 def combattimento(a: Alieno, m: Mostro) -> None:
     a1 = a.get_munizioni()
     m1 = m.get_assalto()
@@ -193,24 +194,23 @@ def combattimento(a: Alieno, m: Mostro) -> None:
 
 
  
-# da finire
-# def proclamaVincitore(c):
-#     testo = str(c)  
-#     lunghezza = len(testo) + 10 
-#     altezza = 5  
+def proclamaVincitore(c):
+    testo = str(c)  
+    lunghezza = len(testo) + 10 
+    altezza = 5  
 
-#     for i in range(altezza):
-#         if i == 0 or i == altezza - 1:
-#             print("*" * lunghezza)
-#         elif i == 2:
+    for i in range(altezza):
+        if i == 0 or i == altezza - 1:
+            print("*" * lunghezza)
+        elif i == 2:
             
-#             print("*" + " " * 4, end="")  
-#             print(testo, end="")         
-#             spazi_restanti = lunghezza - 1 - (4 + len(testo))
-#             print(" " * spazi_restanti + "*") 
-#         else:
+            print("*" + " " * 4, end="")  
+            print(testo, end="")         
+            spazi_restanti = lunghezza - 1 - (4 + len(testo))
+            print(" " * spazi_restanti + "*") 
+        else:
             
-#             print("*" + " " * (lunghezza - 2) + "*")
+            print("*" + " " * (lunghezza - 2) + "*")
 
             
 
@@ -224,6 +224,6 @@ if __name__ == "__main__":
     print(a.get_munizioni())
     print(m)
     print(m.get_assalto())
-    combattimento(a, m)
+    c = combattimento(a, m)
 
-    # proclamaVincitore(combattimento(a, m))
+    proclamaVincitore(c)

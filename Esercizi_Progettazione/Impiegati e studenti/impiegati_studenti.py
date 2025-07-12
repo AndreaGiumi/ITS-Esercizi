@@ -1,4 +1,3 @@
-from __future__ import annotations
 from datetime import date
 from tipi_dato_prog.mytypes import *
 
