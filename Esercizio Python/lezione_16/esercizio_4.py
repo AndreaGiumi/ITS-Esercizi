@@ -30,26 +30,47 @@ class Specie:
     
 
     def crescita(self) -> int:
-        nuova_popolazione: int = self.popolazione() * (1 + self.tasso_crescita()/100)
+        nuova_popolazione: int = int(self.popolazione() * (1 + self.tasso_crescita()/100))
         return nuova_popolazione
     
 
     def anni_per_superare(self, altra_specie: 'Specie') -> int:
         pass
+        
+
+            
+    
+
+    def getDensita(self, area_kmq: float) -> int:
+        '''
+        Calcolo della densità di popolazione:
+        Formula: popolazione / area_kmq
+        Hint: Loop incrementale che continua ad aggiornare la popolazione finché la densità non raggiunge 1 individuo per km²
+
+        '''
+        popolazione: int = self.popolazione()
+        anni: int = 0
+        densita = popolazione / area_kmq
+        while densita < 1:
+            densita = popolazione / area_kmq
+            anni += 1
+
+        return anni
+
+
+
+
+
 
 
 
 class BufaloKlingon(Specie):
-    _nome_specie: str
 
-    def __init__(self, nome, popolazione, tasso_crescita):
-        super().__init__(nome, popolazione, tasso_crescita)
-        self._nome_specie = nome
+    def __init__(self, popolazione: int, tasso_crescita: float):
+        super().__init__(BufaloKlingon, popolazione, tasso_crescita)
+
 
 
 class Elefante(Specie):
-    _nome_specie: str
-    def __init__(self, nome, popolazione, tasso_crescita):
-        super().__init__(nome, popolazione, tasso_crescita)
-
-        self._nome_specie = nome
+    def __init__(self, popolazione: int, tasso_crescita: float):
+        super().__init__(Elefante, popolazione, tasso_crescita)

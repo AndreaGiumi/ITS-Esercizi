@@ -1,0 +1,15 @@
+CREATE DOMAIN CodiceVolo as varchar(3);
+
+
+CREATE DOMAIN CodiceIATA as varchar(6);
+
+
+CREATE DOMAIN IntGZ as integer
+        check(value > 0);
+
+CREATE DOMAIN RealGEZ as real
+        check(value >= 0);
+
+
+CREATE DOMAIN Anno as varchar(4)
+        check(value >1900)

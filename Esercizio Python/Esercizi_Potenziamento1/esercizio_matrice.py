@@ -49,11 +49,24 @@ def caricoMax(mat: list[list[int]]) -> tuple[int]:
     calc_m = 0
     for r in range(len(mat)):
         for c in range(len(mat)):
-            if calcolaCarico(mat, r, c) < calc_m:
+            if calcolaCarico(mat, r, c) > calc_m:
                 calc_m = calcolaCarico(mat, r, c)
              
 
-        print(calc_m)
+    return calc_m
+
+
+
+
+def caricoMin(mat: list[list[int]]) -> tuple[int]:
+    calc_min = 0
+    for r in range(len(mat)):
+        for c in range(len(mat)):
+            if calcolaCarico(mat, r, c) < calc_min:
+                calc_min = calcolaCarico(mat, r, c)
+             
+
+    return calc_min
 
 
     
@@ -76,8 +89,11 @@ def caricoMax(mat: list[list[int]]) -> tuple[int]:
 if __name__ == "__main__":
 
     mat = genera(5)
-    # printMAT(mat)
-    # print(calcolaCarico(mat, 2, 2))
+    printMAT(mat)
+    print(calcolaCarico(mat, 2, 2))
     caricoMax(mat)
-    # print(caricoNullo(mat))
+    print(caricoNullo(mat))
+    print(caricoMax(mat))
+    print(caricoMin(mat))
+
 

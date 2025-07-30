@@ -329,3 +329,32 @@ class CodiceVolo:
 		if re.fullmatch(r'^[A-Z]{2}[0-9]{4}$', codv):
 			return super().__new__(cls, codv)
 		raise ValueError(f"{codv} non è un codice di volo valido")
+     
+
+
+class Username:
+    _username: str =r"^(?=.{3,20}$)(?!.*[_.]{2})[a-zA-Z0-9]+([_.]?[a-zA-Z0-9]+)*$"
+
+    def __init__(self, username: str) -> None:
+        username = username.upper()
+        if not re.findall(self._username, username):
+            raise ValueError(f"Username non valido {username}")
+        self._username = username
+
+
+    def __hash__(self) -> int:
+        return hash(self._username)
+
+    
+    
+    def __eq__(self, other: Any) -> bool:
+        if other is None or \
+                not isinstance(other, type(self)) or \
+                hash(self) != hash(other):
+            return False
+        return self._username == other._username
+    
+    def __str__(self):
+        return f"Matricola: {self._username}"
+    
+

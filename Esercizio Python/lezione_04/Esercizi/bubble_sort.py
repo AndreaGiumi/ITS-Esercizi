@@ -5,6 +5,8 @@ def bubble_sort(l:list[int]) -> list[int]:
         # il ciclo controlla se il primo numero della lista è maggiore del secondo, se si li scambia
         if l[0] > l[1]:
             l[0], l[1] = l[1], l[0]
+        if l[1] > l[2]:
+            l[1], l[2] = l[2], l[1]
 
 
         
@@ -20,7 +22,7 @@ def bubble_sort(l:list[int]) -> list[int]:
 
 
 
-lista: list[int] = [3, 1, 98, 4, 5, 45]
+lista: list[int] = [3, 100, 98, 4, 5, 45]
 
 
 print(bubble_sort(lista))

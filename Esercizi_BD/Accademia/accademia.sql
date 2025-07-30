@@ -218,3 +218,11 @@ values
 insert into Assenza(id, persona, tipo, giorno)
 values
 (19, 3, 'Malattia', '2025-07-19');
+
+
+
+
+
+
+select count(distinct(cognome))
+from persona;
