@@ -81,21 +81,6 @@ create table Direttore(
 );
 
 
-
-
-create table Dipartimento(
-	nome varchar primary key,
-	indirizzo Indirizzo,
-	citta integer not null,
-	foreign key (citta)
-		references citta(id)
-);
-
-
-
-
-
-
 create table Fornitore(
 	id serial primary key,
 	regione_sociale varchar not null,
@@ -108,6 +93,20 @@ create table Fornitore(
 	foreign key (citta)
 		references citta(id)
 );
+
+create table Dipartimento(
+	nome varchar primary key,
+	indirizzo Indirizzo,
+	direttore CodiceFiscale,
+	citta integer not null,
+	foreign key (citta)
+		references citta(id),
+	foreign key (direttore)
+		references Direttore(cf)
+);
+
+
+
 
 create table Ordine(
 	id serial primary key,
