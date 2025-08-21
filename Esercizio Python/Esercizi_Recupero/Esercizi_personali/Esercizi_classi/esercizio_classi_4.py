@@ -50,15 +50,16 @@ class Impiegato:
     
 
     def aumenta_stipendio(self) -> float:
-        new_stip = self.stipendio() + (self.stipendio() * 10) / 100
-        return f"stipendio aumentato: {new_stip:.2f}"
+        self._stipendio *= 1.1
+        # return f"stipendio aumentato: {new_stip:.2f}"
     
     def stampa_dettagli(self) -> str:
-        return f"Impiegato: {self.nome()} {self.cognome()}, matricola: {self.matricola()}, stipendio: {self.stipendio()} €"
+        return f"Impiegato: {self.nome()} {self.cognome()}, matricola: {self.matricola()}, stipendio: {self.stipendio():.2f} €"
     
 
 if __name__=="__main__":
     c:Impiegato = Impiegato("Andri", "Giumi", "GM54I", 3000)
 
     print(c.stampa_dettagli())
-    print(c.aumenta_stipendio())
+    c.aumenta_stipendio()
+    print(c.stampa_dettagli())

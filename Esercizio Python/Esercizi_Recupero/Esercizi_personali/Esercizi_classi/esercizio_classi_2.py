@@ -36,7 +36,7 @@ class Animale:
     def emetti_suono(self) -> str:
         if self.specie() == "Gatto":
             return "Miao"
-        if self.specie() == "Cane":
+        elif self.specie() == "Cane":
             return "Bau"
         else:
             return "Suono sconosciuto!"

@@ -25,69 +25,64 @@ class Prodotto:
         self.set_nome(nome)
         self.set_prezzo(prezzo)
         self.set_scorta(scorta)
-    
 
-    def set_nome(self, nome: int) -> None:
+    def set_nome(self, nome: str) -> None:
         self._nome = nome
 
     def nome(self) -> str:
         return self._nome
-    
+
     def set_prezzo(self, prezzo: float) -> None:
         self._prezzo = prezzo
 
     def prezzo(self) -> float:
         return self._prezzo
-    
+
     def set_scorta(self, scorta: int) -> None:
         self._scorta = scorta
 
     def scorta(self) -> int:
         return self._scorta
-    
+
 
 class GestoreMagazzino:
-    _prodotti: dict[Prodotto,float]
     _costo_magazzinaggio: float
-
-
-    def __init__(self, costo_magazzinaggio: float) -> None:
-        self._prodotti: dict[Prodotto, float] = {}
-        self.set_costoMagazzinaggio(costo_magazzinaggio)
     
+    def __init__(self, costo_magazzinaggio: float) -> None:
+        self._prodotti: dict[str, Prodotto] = {}
+        self.set_costo_magazzinaggio(costo_magazzinaggio)
 
-    def set_costoMagazzinaggio(self, costo_magazzinaggio: float) -> None:
-        self._costo_magazzino = costo_magazzinaggio
+    def set_costo_magazzinaggio(self, costo_magazzinaggio: float) -> None:
+        self._costo_magazzinaggio = costo_magazzinaggio
 
     def costo_magazzinaggio(self) -> float:
         return self._costo_magazzinaggio
-        
 
-    def aggiungi_prodotto(self, prodotto: str) -> dict[Prodotto, float]:
-        self._prodotti[prodotto.nome] = prodotto
+    def aggiungi_prodotto(self, prodotto: Prodotto) -> None:
+        self._prodotti[prodotto.nome()] = prodotto
 
-    def rimuovi_prodotto(self, nome: str) -> None:
-        self._prodotti.pop(nome)
+    def rimuovi_prodotto(self, nome_prodotto: str) -> None:
+        if nome_prodotto in self._prodotti:
+            del self._prodotti[nome_prodotto]
 
-    def costi_magazzinaggio(self) -> None:
+    def calcola_costo_magazzinaggio(self) -> float:
         costi = 0
-
-        for nome, prodotto in self._prodotti.items():
-            costi += prodotto.scorta
-
-
-if __name__=="__main__":
-
-    p: Prodotto = Prodotto("Barretta", 2.50, 10)
-
-    d_p = GestoreMagazzino(10)
+        for prodotto in self._prodotti.values():
+            costi += prodotto.scorta() * self._costo_magazzinaggio
+        return costi
 
 
-    d_p.aggiungi_prodotto(p)
+if __name__ == "__main__":
+    p = Prodotto("Barretta", 2.50, 10)
+    p1 = Prodotto("Pane", 1.50, 100)
+    p2 = Prodotto("Coca Cola", 2.50, 50)
+    p3 = Prodotto("Acqua", 2.50, 150)
 
-    print
+    magazzino = GestoreMagazzino(10)
 
-    
+    magazzino.aggiungi_prodotto(p)
+    magazzino.aggiungi_prodotto(p1)
+    magazzino.aggiungi_prodotto(p2)
+    magazzino.aggiungi_prodotto(p3)
 
-
-    
+    print("Costo totale di magazzinaggio:", magazzino.calcola_costo_magazzinaggio())
