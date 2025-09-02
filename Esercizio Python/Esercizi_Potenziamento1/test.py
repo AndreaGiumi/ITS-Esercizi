@@ -1,17 +1,10 @@
+x = ["Che", "cosa", "viene", "stampato", "da", "questo", "programma?"]
 
-somma = 0
+y = ""
 
-while True:
-    numero: int = int(input("Inserisci numero da sommare: "))
+z = 0
 
-    if numero < 0:
-        break
-    else:
-        somma += numero
-
-print(somma)
-
-
-
-
+for w in x:
+    y = y + w[z]
+print(y)
 

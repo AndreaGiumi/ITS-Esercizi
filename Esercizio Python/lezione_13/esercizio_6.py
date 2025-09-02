@@ -1,5 +1,8 @@
 def Production(n: int):
-    return (n + 2) * Production(n + 1)
+    if n == 0:
+        return 2
+    else:
+        return (n + 2) * Production(n - 1)
 
 
 

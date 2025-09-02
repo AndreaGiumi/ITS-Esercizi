@@ -1,7 +1,12 @@
 def vowelsCounter(s:str):
-    if len(s) > 0:
-        if s not in ["a", "e", "i", "o", "u"]:
-            s[0].lower = 0 + vowelsCounter(s[1:])
-        else:
-            s[0].lower = 1 + vowelsCounter(s[1:])
-vowelsCounter("Ciao")
+    if s == "":
+        return 0
+    
+    first_char = s[0].lower()
+
+    if first_char in "aeiou":
+        return 1 + vowelsCounter(s[1:])
+    else:
+        return vowelsCounter(s[1:])
+
+print(vowelsCounter("Ciao"))
